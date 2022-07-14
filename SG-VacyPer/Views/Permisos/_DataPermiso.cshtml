@@ -1,0 +1,75 @@
+﻿@model Permisos
+
+<!-- Vista parcial de los datos de PERMISOS  -->
+<!-- /.card-header -->
+<div class="card-body">
+    <!-- ************** DATOS DEL FORMULARIO *********** -->
+    <form method="post">
+
+        @{
+            // ID OCULTO PARA QUE SEA TRANSMITIDO EN EL POST DE *** EDITAR *** YA QUE SINO LO PROCESA COMO NUEVO REGISTRO 
+            if (String.Equals(ViewData["Title"], "EditPermiso")) 
+            {
+                <input asp-for="IdPermisos" hidden/>
+            }
+        }
+        
+        <div class="row">
+
+             <div class="col-sm-6">
+                <!-- text input -->
+                <div class="form-group">
+                    <label asp-for="Descripcion"></label>
+                    <input asp-for="Descripcion" class="form-control" />
+                    <span asp-validation-for="Descripcion" class="text-danger"></span>
+                </div>
+            </div>
+
+        </div>
+               
+        <div class="row">
+           
+            <div class="col-sm-2">
+                <!-- text input -->
+                <div class="form-group">
+                    <label asp-for="DiasOficiales"></label>
+                    <input asp-for="DiasOficiales" class="form-control" />
+                    <span asp-validation-for="DiasOficiales" class="text-danger"></span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-sm-2">
+                <!-- select -->
+                <div class="form-group">
+                    <label asp-for="Tipo"></label>
+                    <select asp-for="Tipo" class="form-control">
+                        <option>Asuntos propios</option>
+                        <option>Formación</option>
+                        <option>Incapacidad temporal</option>
+                        <option>Nacimiento hijos</option>
+                        <option>Matrimonio</option>
+                        <option>Otros motivos</option>
+                    </select>
+                </div>
+            </div>
+            
+        </div>
+               
+
+        <!-- GRABAR / REGRESAR -->
+        <div class="card-footer">
+            <button type="submit" class="btn btn-primary">Guardar</button>
+
+            <a asp-controller="Permisos" asp-action="IndexPermisos" class="btn btn-secondary">
+                Regresar
+            </a>
+        </div>
+
+
+    </form>
+</div>
+<!-- /.card-body -->

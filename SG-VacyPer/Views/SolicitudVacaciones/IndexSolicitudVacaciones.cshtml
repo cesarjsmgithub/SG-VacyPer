@@ -1,0 +1,158 @@
+﻿@model IEnumerable<SolicitudVacaciones>
+@{
+    ViewData["Title"] = "IndexSolicitudVacaciones";
+}
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">Solicitud de vacaciones</h1>
+                </div><!-- /.col -->
+
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+    <!-- ***************** CONTENIDO ***************** -->
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+
+            <div class="col-6 text-end">
+                <a asp-controller="SolicitudVacaciones" asp-action="CreateSolicitudVacaciones" class="btn btn-primary">
+                    <i class="bi bi-plus-circle"></i> &nbsp; Nuevo registro
+                </a>
+            </div>
+            <br />
+
+            <!-- filtros -->
+            <div class="row">
+                <label class="control-label">&nbsp;&nbsp;&nbsp;&nbsp; Estado:</label>
+                <div class="col-sm-1">
+                    <!-- select -->
+                    <div class="form-group">
+                        <select id="IdFiltroEstado" >
+                            <option>Todos</option>
+                            <option>Borrador</option>
+                            <option>Confirmada</option>
+                            <option>Rechazada</option>
+                        </select>
+                    </div>
+                </div>
+
+                
+
+                <div class="col-sm-2">
+                    <!-- text input -->
+                    <div class="form-group">
+                        <label class="control-label">Fecha solicitud:</label>
+                        <input id="IdFiltroFechaSolictud"  type="date" />
+                    </div>
+                </div>
+
+                <div class="col-sm-2">
+                    <!-- text input -->
+                    <div class="form-group">
+                        <label class="control-label">Fecha comienzo:</label>
+                        <input id="IdFiltroFechaComisnzo"  type="date" />
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <!-- text input -->
+                    <div class="form-group">
+                        <label class="control-label">Empleado:</label>
+                        <input id="IdFiltroEmpleado"  />
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Lista</h3>
+
+                            <!-- SEARCH -->
+                            <partial name="_IndexSearch" />
+
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body table-responsive p-0" style="height: 420px;">
+                            <table class="table table-head-fixed text-nowrap">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Empleado</th>
+                                        <th>Fecha de solictud</th>
+                                        <th>Comienzo</th>
+                                        <th>Finalización</th>
+                                        <th>Estado</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+
+                                <!-- ************ CARGA DE DATOS ***************** -->
+                                <tbody>
+                                    @foreach (var obj in Model)
+                                    {
+
+                                        <tr>
+                                            <td width="5%">
+                                                @obj.IdSolicitudVacaciones
+                                            </td>
+                                            <td width="20%">
+                                                @obj.DocIdentidad
+                                            </td>
+                                            <td width="10%">
+                                                @obj.FechaSolicitud.ToShortDateString()
+                                            </td>
+                                            <td width="10%">
+                                                @obj.FechaComienzo.ToShortDateString()
+                                            </td>
+                                            <td width="10%">
+                                                @obj.FechaFinalizacion.ToShortDateString()
+                                            </td>
+                                            <td width="10%">
+                                                @obj.Estado
+                                            </td>
+
+
+                                            @{
+                                                // datos para la vista parcial de las acciones del INDEX -->
+                                                ViewData["AspController"] = "SolicitudVacaciones";
+                                                ViewData["AspAction1"] = "DeleteSolicitudVacaciones";
+                                                ViewData["AspAction2"] = "EditSolicitudVacaciones";
+                                                ViewData["AspRouteId"] = obj.IdSolicitudVacaciones;
+                                            }
+
+                                            <!-- Controles: botones de Editar y Borrar -->
+                                            <partial name="_IndexActionsControls" />
+
+                                        </tr>
+                                    }
+                                </tbody>
+
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
+                        <!-- Controles: PAGINACIÓN -->
+                        <partial name="_IndexPagination" />
+
+                    </div>
+                    <!-- /.card -->
+                </div>
+            </div>
+            <!-- /.row -->
+
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

@@ -1,0 +1,23 @@
+﻿<!-- INICIO: botones de Editar y Borrar -->
+<td>
+    <!-- <div class="card-footer">  -->
+    <div class="w-30 btn-group" role="group">
+        <form method="post" asp-controller="@ViewData["AspController"]" asp-action="@ViewData["AspAction1"]" asp-route-id="@ViewData["AspRouteId"]">
+            <a asp-controller="@ViewData["AspController"]" asp-action="@ViewData["AspAction2"]"
+               asp-route-id="@ViewData["AspRouteId"]" class="btn btn-primary">Editar</a>
+
+            <span id="confirmDeleteSpan_@ViewData["AspRouteId"]" style="display:none">
+                <span>¿Está seguro de borrar el registro?</span>
+                <button type="submit" class="btn btn-danger">Sí</button>
+                <a href="#" class="btn btn-primary"
+                   onclick="confirmDelete('@ViewData["AspRouteId"]', false)">No</a>
+            </span>
+
+            <span id="deleteSpan_@ViewData["AspRouteId"]">
+                <a href="#" class="btn btn-danger"
+                   onclick="confirmDelete('@ViewData["AspRouteId"]', true)">Borrar</a>
+            </span>
+        </form>
+    </div>
+</td>
+<!-- FIN: botones de Editar y Borrar -->

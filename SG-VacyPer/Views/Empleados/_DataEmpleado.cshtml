@@ -1,0 +1,230 @@
+﻿@model Empleados
+
+<!-- Vista parcial de los datos de EMPLEADOS  -->
+<!-- /.card-header -->
+<div class="card-body">
+    <!-- ************** DATOS DEL FORMULARIO *********** -->
+    <form method="post">
+
+        @{
+            // ID OCULTO PARA QUE SEA TRANSMITIDO EN EL POST DE *** EDITAR *** YA QUE SINO LO PROCESA COMO NUEVO REGISTRO
+            if (String.Equals(ViewData["Title"], "EditEmpleado"))
+            {
+                <input asp-for="IdEmpleado" hidden />
+            }
+        }
+
+        <div class="row">
+
+            <div class="col-sm-2">
+                <!-- text input -->
+                <div class="form-group">
+                    <label asp-for="DocIdentidad"></label>
+                    <input asp-for="DocIdentidad" class="form-control" />
+                    <span asp-validation-for="DocIdentidad" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <!-- text input -->
+                <div class="form-group">
+                    <label asp-for="NombreCompleto"></label>
+                    <input asp-for="NombreCompleto" class="form-control" />
+                    <span asp-validation-for="NombreCompleto" class="text-danger"></span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-sm-2">
+                <div class="form-group">
+                    <label asp-for="FechaNacimiento" class="control-label"></label>
+                    <input asp-for="FechaNacimiento" class="form-control" />
+                    <span asp-validation-for="FechaNacimiento" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="col-sm-2">
+                <div class="form-group">
+                    <label asp-for="FechaIngreso" class="control-label"></label>
+                    <input asp-for="FechaIngreso" class="form-control" />
+                    <span asp-validation-for="FechaIngreso" class="text-danger"></span>
+                </div>
+            </div>
+
+            <!-- antes usaba este datepicker - NOTA: A REVISAR MAS ADELANTE
+            <input asp-for="FechaIngreso" id="datepicker2" type="text" class="form-control" />
+            -->
+
+        </div>
+
+        <div class="row">
+            <div class="col-sm-2">
+                <!-- select -->
+                <div class="form-group">
+                    <label asp-for="Rol"></label>
+                    <select asp-for="Rol" class="form-control">
+                        <option>Empleado</option>
+                        <option>Responsable</option>
+                        <option>Gerencia de RRHH</option>
+                        <option>Administrador</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <!-- text input -->
+                <div class="form-group">
+                    <label asp-for="ResponsableId"></label>
+                    <input asp-for="ResponsableId" class="form-control" />
+                    <span asp-validation-for="ResponsableId" class="text-danger"></span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-sm-2">
+                <!-- select -->
+                <div class="form-group">
+                    <label asp-for="Estado"></label>
+                    <select asp-for="Estado" class="form-control">
+                        <option>Activo</option>
+                        <option>Baja médica</option>
+                        <option>No es empleado</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-sm-2">
+                <div class="form-group">
+                    <label asp-for="FechaSalida" class="control-label"></label>
+                    <input asp-for="FechaSalida" class="form-control" disabled/>
+                    <span asp-validation-for="FechaSalida" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+
+            @{
+                // PARA NO MOSTRALO POR AHORA
+                if (String.Equals(ViewData["Title"], "NO MOSTRAR"))
+                {
+
+                }
+            }
+
+            <div class="col-sm-1">
+                <!-- text input -->
+                <div class="form-group">
+                    <label asp-for="IdVacaciones"></label>
+                    <input asp-for="IdVacaciones" class="form-control" />
+                    <span asp-validation-for="IdVacaciones" class="text-danger"></span>
+                </div>
+            </div>
+
+
+            <div class="col-sm-1">
+                <!-- text input -->
+                <div class="form-group">
+                    <label asp-for="VacacionesDisfrutadas"></label>
+                    <input asp-for="VacacionesDisfrutadas" class="form-control" disabled />
+                    <span asp-validation-for="VacacionesDisfrutadas" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="col-sm-1">
+                <!-- text input -->
+                <div class="form-group">
+                    <label asp-for="AsuntosPropios"></label>
+                    <input asp-for="AsuntosPropios" class="form-control" disabled />
+                    <span asp-validation-for="AsuntosPropios" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="col-sm-1">
+                <!-- text input -->
+                <div class="form-group">
+                    <label asp-for="Formacion"></label>
+                    <input asp-for="Formacion" class="form-control" disabled />
+                    <span asp-validation-for="Formacion" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="col-sm-2">
+                <!-- text input -->
+                <div class="form-group">
+                    <label asp-for="IncapacidadTemporal"></label>
+                    <input asp-for="IncapacidadTemporal" class="form-control" disabled />
+                    <span asp-validation-for="IncapacidadTemporal" class="text-danger"></span>
+                </div>
+            </div>
+
+
+            <div class="col-sm-1">
+                <!-- text input -->
+                <div class="form-group">
+                    <label asp-for="NacimientoHijos"></label>
+                    <input asp-for="NacimientoHijos" class="form-control" disabled />
+                    <span asp-validation-for="NacimientoHijos" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="col-sm-1">
+                <!-- text input -->
+                <div class="form-group">
+                    <label asp-for="Matrimonio"></label>
+                    <input asp-for="Matrimonio" class="form-control" disabled />
+                    <span asp-validation-for="Matrimonio" class="text-danger"></span>
+                </div>
+            </div>
+
+
+            <div class="col-sm-1">
+                <!-- text input -->
+                <div class="form-group">
+                    <label asp-for="OtrosMotivos"></label>
+                    <input asp-for="OtrosMotivos" class="form-control" disabled />
+                    <span asp-validation-for="OtrosMotivos" class="text-danger"></span>
+                </div>
+            </div>
+
+
+        </div>
+
+
+        <div class="row">
+            <div class="col-sm-6">
+                <!-- textarea -->
+                <div class="form-group">
+                    <label asp-for="Direccion"></label>
+                    <textarea asp-for="Direccion" class="form-control" rows="3"></textarea>
+                </div>
+            </div>
+
+            <div class="col-sm-2">
+                <!-- text input -->
+                <div class="form-group">
+                    <label asp-for="Telefonos"></label>
+                    <input asp-for="Telefonos" class="form-control" />
+                    <span asp-validation-for="Telefonos" class="text-danger"></span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- GRABAR / REGRESAR -->
+        <div class="card-footer">
+            <button type="submit" class="btn btn-primary">Guardar</button>
+
+            <a asp-controller="Empleados" asp-action="IndexEmpleados" class="btn btn-secondary">
+                Regresar
+            </a>
+        </div>
+
+
+    </form>
+</div>
+<!-- /.card-body -->

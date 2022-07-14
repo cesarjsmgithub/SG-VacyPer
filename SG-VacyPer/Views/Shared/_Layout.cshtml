@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - SG-VacyPer</title>
+
+    <!-- SE CARGAN LOS ESTILOS DEL SITIO WEB (css) -->
+    <partial name="_SiteStyles" />
+        
+    @await RenderSectionAsync("Styles", required: false)
+   
+</head>
+
+<body>
+
+    <partial name="_NavBar" />
+    <partial name="_SideBar" />
+    
+    @RenderBody()
+
+    <partial name="_Footer" />
+
+    <!-- SE CARGAN LOS SCRIPTS DEL SITIO WEB (js) -->
+    <partial name="_SiteScripts" />
+    
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+

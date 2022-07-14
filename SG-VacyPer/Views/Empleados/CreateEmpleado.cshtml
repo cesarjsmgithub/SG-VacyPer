@@ -1,0 +1,45 @@
+﻿@{
+    ViewData["Title"] = "CreateEmpleado";
+}
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">Empleados</h1>
+                </div><!-- /.col -->
+
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+    <!-- Main content -->
+    <div class="content">
+        <div class="container-fluid">
+
+            <!-- ************** DATOS DEL FORMULARIO *********** -->
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Registrar datos</h3>
+                </div>
+
+               <!-- Se llama la vista parcial de EMPLEADOS -->
+               <partial name="_DataEmpleado" />
+
+            </div>    <!-- /.card -->
+
+        </div>  <!-- /.container-fluid -->
+    </div>
+
+    <!-- /.content -->
+    @section Scripts
+        {
+        <!-- Vista parcial con validaciones y Scripts comunes para los formularios  -->
+        <partial name="_FormsValidationScripts" />
+    }
+
+ </div>
+ <!-- /.content-wrapper -->

@@ -1,0 +1,132 @@
+﻿@model SolicitudVacaciones
+
+<!-- Vista parcial de los datos de SolicitudVacaciones  -->
+<!-- /.card-header -->
+<div class="card-body">
+    <!-- ************** DATOS DEL FORMULARIO *********** -->
+    <form method="post">
+
+        @{
+            // ID OCULTO PARA QUE SEA TRANSMITIDO EN EL POST DE *** EDITAR *** YA QUE SINO LO PROCESA COMO NUEVO REGISTRO 
+            if (String.Equals(ViewData["Title"], "EditSolicitudVacaciones")) 
+            {
+                <input asp-for="IdSolicitudVacaciones" hidden/>
+            }
+           
+        }
+        
+        <div class="row">
+
+             <div class="col-sm-2">
+                <!-- text input -->
+                <div class="form-group">
+                    <label asp-for="IdEmpleado"></label>
+                    <input asp-for="IdEmpleado" class="form-control" />
+                    <span asp-validation-for="IdEmpleado" class="text-danger"></span>
+                </div>
+            </div>
+
+             <div class="col-sm-2">
+                <!-- text input -->
+                <div class="form-group">
+                    <label asp-for="DocIdentidad"></label>
+                    <input asp-for="DocIdentidad" class="form-control" />
+                    <span asp-validation-for="DocIdentidad" class="text-danger"></span>
+                </div>
+            </div>
+            
+        </div>
+               
+        <div class="row">
+           
+            <div class="col-sm-2">
+                <!-- text input -->
+                <div class="form-group">
+                    <label asp-for="FechaComienzo"></label>
+                    <input asp-for="FechaComienzo" class="form-control" />
+                    <span asp-validation-for="FechaComienzo" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="col-sm-2">
+                <!-- text input -->
+                <div class="form-group">
+                    <label asp-for="FechaFinalizacion"></label>
+                    <input asp-for="FechaFinalizacion" class="form-control" />
+                    <span asp-validation-for="FechaFinalizacion" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="col-sm-2">
+                <!-- text input -->
+                <div class="form-group">
+                    <label asp-for="FechaSolicitud"></label>
+                    <input asp-for="FechaSolicitud" class="form-control" disabled/>
+                    <span asp-validation-for="FechaSolicitud" class="text-danger"></span>
+                </div>
+            </div>
+
+
+        </div>
+
+
+         <div class="row">
+
+           <div class="col-sm-2">
+                <!-- select -->
+                <div class="form-group">
+                    <label asp-for="Estado"></label>
+                    <select asp-for="Estado" class="form-control">
+                        <option>Borrador</option>
+                        <option>Confirmada</option>
+                        <option>Rechazada</option>
+                    </select>
+                </div>
+            </div>
+
+
+            <div class="col-sm-2">
+                <!-- text input -->
+                <div class="form-group">
+                    <label asp-for="IdVacaciones"></label>
+                    <input asp-for="IdVacaciones" class="form-control" />
+                    <span asp-validation-for="IdVacaciones" class="text-danger"></span>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="row">
+            <div class="col-sm-6">
+                <!-- textarea -->
+                <div class="form-group">
+                    <label asp-for="Comentarios"></label>
+                    <textarea asp-for="Comentarios" class="form-control" rows="3"></textarea>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-sm-6">
+                <!-- textarea -->
+                <div class="form-group">
+                    <label asp-for="MotivoRechazo"></label>
+                    <textarea asp-for="MotivoRechazo" class="form-control" rows="3"></textarea>
+                </div>
+            </div>
+        </div>               
+
+        <!-- GRABAR / REGRESAR -->
+        <div class="card-footer">
+            <button type="submit" class="btn btn-primary">Guardar</button>
+
+            <a asp-controller="SolicitudVacaciones" asp-action="IndexSolicitudVacaciones" class="btn btn-secondary">
+                Regresar
+            </a>
+        </div>
+
+
+    </form>
+</div>
+<!-- /.card-body -->

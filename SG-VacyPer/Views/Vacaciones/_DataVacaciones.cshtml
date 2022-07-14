@@ -1,0 +1,82 @@
+﻿@model Vacaciones
+
+<!-- Vista parcial de los datos de VACACIONES  -->
+<!-- /.card-header -->
+<div class="card-body">
+    <!-- ************** DATOS DEL FORMULARIO *********** -->
+    <form method="post">
+
+        @{
+            // ID OCULTO PARA QUE SEA TRANSMITIDO EN EL POST DE *** EDITAR *** YA QUE SINO LO PROCESA COMO NUEVO REGISTRO 
+            if (String.Equals(ViewData["Title"], "EditVacaciones")) 
+            {
+                <input asp-for="IdVacaciones" hidden/>
+            }
+           
+        }
+        
+        <div class="row">
+
+             <div class="col-sm-6">
+                <!-- text input -->
+                <div class="form-group">
+                    <label asp-for="Descripcion"></label>
+                    <input asp-for="Descripcion" class="form-control" />
+                    <span asp-validation-for="Descripcion" class="text-danger"></span>
+                </div>
+            </div>
+
+        </div>
+               
+        <div class="row">
+           
+            <div class="col-sm-2">
+                <!-- text input -->
+                <div class="form-group">
+                    <label asp-for="DiasOficiales"></label>
+                    <input asp-for="DiasOficiales" class="form-control" />
+                    <span asp-validation-for="DiasOficiales" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="col-sm-2">
+                <!-- text input -->
+                <div class="form-group">
+                    <label asp-for="DiasAdicionales"></label>
+                    <input asp-for="DiasAdicionales" class="form-control" />
+                    <span asp-validation-for="DiasAdicionales" class="text-danger"></span>
+                </div>
+            </div>
+
+        </div>
+
+        
+        <div class="row">
+
+            <div class="col-sm-2">
+                <!-- select -->
+                <div class="form-group">
+                    <label asp-for="Tipo"></label>
+                    <select asp-for="Tipo" class="form-control">
+                        <option>Laborables</option>
+                        <option>Días naturales</option>
+                    </select>
+                </div>
+            </div>
+            
+        </div>
+               
+
+        <!-- GRABAR / REGRESAR -->
+        <div class="card-footer">
+            <button type="submit" class="btn btn-primary">Guardar</button>
+
+            <a asp-controller="Vacaciones" asp-action="IndexVacaciones" class="btn btn-secondary">
+                Regresar
+            </a>
+        </div>
+
+
+    </form>
+</div>
+<!-- /.card-body -->

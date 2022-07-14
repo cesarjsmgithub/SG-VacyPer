@@ -1,0 +1,35 @@
+﻿<!-- Vista parcial con validaciones y Scripts comunes para los formularios  -->
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+    $(function() {
+        $("#datepicker1").datepicker({ dateFormat: 'dd/mm/yy' });
+    });
+
+
+    $(function() {
+        $("#datepicker2").datepicker({ dateFormat: 'dd/mm/yy' });
+    });
+
+    $(function() {
+        $("#datepicker3").datepicker({ dateFormat: 'dd/mm/yy' });
+    });
+
+    function confirmDelete(uniqueId, isDeleteClicked) {
+        var deleteSpan = 'deleteSpan_' + uniqueId;
+        var confirmDeleteSpan = 'confirmDeleteSpan_' + uniqueId;
+
+        if (isDeleteClicked) {
+            $('#' + deleteSpan).hide();
+            $('#' + confirmDeleteSpan).show();
+        } else {
+            $('#' + deleteSpan).show();
+            $('#' + confirmDeleteSpan).hide();
+        }
+    }
+</script>
+
+<!-- Para que las validaciones se hangan del lado del cliente  -->
+<partial name="_ValidationScriptsPartial" />
+

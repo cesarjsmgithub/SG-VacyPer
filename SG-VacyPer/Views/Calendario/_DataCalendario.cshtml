@@ -1,0 +1,63 @@
+﻿@model Calendario
+
+<!-- Vista parcial de los datos de PERMISOS  -->
+<!-- /.card-header -->
+<div class="card-body">
+    <!-- ************** DATOS DEL FORMULARIO *********** -->
+    <form method="post">
+
+        @{
+            // ID OCULTO PARA QUE SEA TRANSMITIDO EN EL POST DE *** EDITAR *** YA QUE SINO LO PROCESA COMO NUEVO REGISTRO 
+            if (String.Equals(ViewData["Title"], "EditCalendario")) 
+            {
+                <input asp-for="IdCalendario" hidden/>
+            }
+        }
+        
+        <div class="row">
+
+             <div class="col-sm-6">
+                <!-- text input -->
+                <div class="form-group">
+                    <label asp-for="Descripcion"></label>
+                    <input asp-for="Descripcion" class="form-control" />
+                    <span asp-validation-for="Descripcion" class="text-danger"></span>
+                </div>
+            </div>
+
+        </div>
+               
+        <div class="row">
+           
+            <div class="col-sm-2">
+                <div class="form-group">
+                    <label asp-for="Comienzo" class="control-label"></label>
+                    <input asp-for="Comienzo" class="form-control" />
+                    <span asp-validation-for="Comienzo" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="col-sm-2">
+                <div class="form-group">
+                    <label asp-for="Fin" class="control-label"></label>
+                    <input asp-for="Fin" class="form-control" />
+                    <span asp-validation-for="Fin" class="text-danger"></span>
+                </div>
+            </div>
+
+        </div>
+                             
+
+        <!-- GRABAR / REGRESAR -->
+        <div class="card-footer">
+            <button type="submit" class="btn btn-primary">Guardar</button>
+
+            <a asp-controller="Calendario" asp-action="IndexCalendario" class="btn btn-secondary">
+                Regresar
+            </a>
+        </div>
+
+
+    </form>
+</div>
+<!-- /.card-body -->
